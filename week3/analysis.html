@@ -1,36 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fit Future - Analysis</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="script.js" defer></script>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<i class="fas fa-bars hamburger"></i>
-<div class="menu">
+
+<!-- Hamburger Menu -->
+<div class="hamburger">&#9776;</div>
+<div class="side-menu">
   <a href="welcome.html">Home</a>
-  <a href="login.html">Login</a>
-  <a href="signup.html">Signup</a>
   <a href="form.html">Form</a>
   <a href="analysis.html">Analysis</a>
 </div>
 
-<div class="page">
-  <h2>Your Health Analysis</h2>
-  <p id="userNameDisplay"></p>
-  <div class="chart-container">
-    <canvas id="weightChart"></canvas>
-  </div>
-  <div class="options">
-    <p>Do you want to see a future weight prediction?</p>
-    <button id="futureBtn"><i class="fas fa-forward"></i> Future Prediction</button>
-    <button id="pastBtn"><i class="fas fa-backward"></i> View Past Trend</button>
-  </div>
+<h2>Your Health Analysis</h2>
+<p id="userNameDisplay"></p>
+
+<div class="chart-container">
+  <canvas id="weightChart"></canvas>
 </div>
+
+<script>
+$(document).ready(function(){
+
+  // Hamburger toggle
+  $(".hamburger").click(function () {
+    $(".side-menu").toggleClass("open");
+  });
+
+  // Load data from localStorage
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  if(userData){
+    $("#userNameDisplay").text(userData.fullName + "'s Weight History");
+
+    const ctx = document.getElementById("weightChart").getContext("2d");
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['2 Years Ago','1 Year Ago','Current'],
+        datasets: [{
+          label: 'Weight (kg)',
+          data: [userData.w2, userData.w1, userData.current],
+          backgroundColor: ['#f1c40f','#e67e22','#2ecc71']
+        }]
+      },
+      options: { responsive:true, plugins:{legend:{display:false}} }
+    });
+  } else {
+    $("#userNameDisplay").text("No user data found. Please fill the form first.");
+  }
+
+});
+</script>
+
 </body>
 </html>

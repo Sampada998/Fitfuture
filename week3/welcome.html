@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fit Future - Welcome</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="script.js" defer></script>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <title>Fit Future - Welcome</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-<i class="fas fa-bars hamburger"></i>
-<div class="menu">
+
+<!-- Hamburger -->
+<div class="hamburger">&#9776;</div>
+
+<!-- Side Menu -->
+<div class="side-menu">
   <a href="welcome.html">Home</a>
   <a href="login.html">Login</a>
   <a href="signup.html">Signup</a>
-  <a href="form.html">Form</a>
-  <a href="analysis.html">Analysis</a>
 </div>
 
-<div class="page">
-  <h1>Welcome to Fit Future</h1>
-  <p>Discover your future health by understanding your today.</p>
-  <button data-target="login.html" class="nav-btn"><i class="fas fa-hand-point-right"></i> Get Started</button>
+<h1>Welcome to Fit Future</h1>
+<p>Discover your future health by understanding today.</p>
+
+<div class="container">
+  <button onclick="window.location.href='login.html'">Get Started</button>
 </div>
+
 </body>
 </html>

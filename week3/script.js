@@ -1,53 +1,56 @@
-$(document).ready(function(){
-
-  // Hamburger toggle
-  $(".hamburger").click(function(){
-    $(".menu").toggle();
+// HAMBURGER MENU
+$(document).ready(function () {
+  $(".hamburger").click(function () {
+    $(".side-menu").toggleClass("open");
   });
+});
 
-  // Navigation buttons
-  $(".nav-btn").click(function(){
-    const target = $(this).data("target");
-    if(target){
-      window.location.href = target; // Navigate to HTML page
-    }
-  });
+// FORM SUBMISSION
+function submitForm() {
 
-  // Form submission: save data to localStorage
-  $("#submitForm").click(function(){
-    const fullName = $("#fullName").val();
-    const current = Number($("#currentWeight").val());
-    const w1 = Number($("#weight1yr").val());
-    const w2 = Number($("#weight2yr").val());
+  const fullName = $("#fullName").val();
+  const current = Number($("#currentWeight").val());
+  const w1 = Number($("#weight1yr").val());
+  const w2 = Number($("#weight2yr").val());
 
-    localStorage.setItem("fullName", fullName);
-    localStorage.setItem("weightData", JSON.stringify([w2, w1, current]));
+  // SAVE TO LOCAL STORAGE
+  localStorage.setItem("fullName", fullName);
+  localStorage.setItem("weightData", JSON.stringify([w2, w1, current]));
 
-    window.location.href = "analysis.html";
-  });
+  // REDIRECT TO ANALYSIS PAGE
+  window.location.href = "analysis.html";
+}
 
-  // Load chart on analysis page
-  if($("#weightChart").length && localStorage.getItem("weightData")){
-    const fullName = localStorage.getItem("fullName");
-    const weightData = JSON.parse(localStorage.getItem("weightData"));
-    $("#userNameDisplay").html(`<strong>${fullName}</strong>'s Weight History`);
+// ANALYSIS PAGE CHART
+$(document).ready(function () {
 
-    const ctx = document.getElementById('weightChart').getContext('2d');
+  // Run ONLY if we are on analysis.html
+  if ($("#weightChart").length) {
+
+    const name = localStorage.getItem("fullName") || "";
+    const weightData = JSON.parse(localStorage.getItem("weightData")) || [0, 0, 0];
+
+    // Show name
+    $("#userNameDisplay").text(name + "'s Weight Trend");
+
+    const ctx = document.getElementById("weightChart").getContext("2d");
+
+    // Create Chart
     new Chart(ctx, {
-      type: 'bar',
+      type: "line",
       data: {
-        labels: ['2 years ago','1 year ago','Current'],
+        labels: ["2 Years Ago", "1 Year Ago", "Current"],
         datasets: [{
-          label: 'Weight (kg)',
+          label: "Weight (kg)",
           data: weightData,
-          backgroundColor: ['#f1c40f','#e67e22','#2ecc71']
+          borderWidth: 3,
+          borderColor: "brown",
+          backgroundColor: "rgba(165, 42, 42, 0.3)"
         }]
       },
-      options: { responsive:true, plugins:{legend:{display:false}} }
+      options: {
+        responsive: true
+      }
     });
   }
-
-  $("#futureBtn").click(function(){ alert("Future prediction coming soon!"); });
-  $("#pastBtn").click(function(){ alert("Past trend coming soon!"); });
-
 });

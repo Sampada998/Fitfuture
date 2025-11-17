@@ -1,33 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fit Future - Signup</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="script.js" defer></script>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <title>Signup</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-<i class="fas fa-bars hamburger"></i>
-<div class="menu">
-  <a href="welcome.html">Home</a>
-  <a href="login.html">Login</a>
-  <a href="signup.html">Signup</a>
-  <a href="form.html">Form</a>
-  <a href="analysis.html">Analysis</a>
+
+
+<h2>Create Account</h2>
+
+<div class="container">
+  <input type="text" placeholder="Full Name">
+  <input type="email" placeholder="Email Address">
+  <input type="password" placeholder="Create Password">
+  <button onclick="window.location.href='form.html'">Next</button>
+
+  <p>Already have an account? <a href="login.html">Sign In</a></p>
 </div>
 
-<div class="page">
-  <h2>Create Account</h2>
-  <div class="container">
-    <input type="text" placeholder="Full Name" id="signupName">
-    <input type="email" placeholder="Email" id="signupEmail">
-    <input type="password" placeholder="Create Password" id="signupPass">
-    <button data-target="form.html" class="nav-btn"><i class="fas fa-hand-point-right"></i> Next</button>
-    <p>Already have an account? <span data-target="login.html" class="nav-btn">Sign In</span></p>
-  </div>
-</div>
 </body>
 </html>

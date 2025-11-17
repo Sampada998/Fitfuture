@@ -1,50 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fit Future - User Form</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="script.js" defer></script>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Form</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-<i class="fas fa-bars hamburger"></i>
-<div class="menu">
-  <a href="welcome.html">Home</a>
-  <a href="login.html">Login</a>
-  <a href="signup.html">Signup</a>
-  <a href="form.html">Form</a>
-  <a href="analysis.html">Analysis</a>
+
+<h2>User Information</h2>
+
+<div class="container">
+  <input id="fullName" type="text" placeholder="Full Name">
+  <input id="age" type="number" placeholder="Age">
+  <input id="height" type="number" placeholder="Height (cm)">
+  <input id="currentWeight" type="number" placeholder="Current Weight (kg)">
+  <input id="weight1yr" type="number" placeholder="Weight 1 year ago">
+  <input id="weight2yr" type="number" placeholder="Weight 2 years ago">
+  <input id="exercise" type="text" placeholder="Do you exercise?">
+  <input id="hobby" type="text" placeholder="Hobby">
+  <input id="walking" type="text" placeholder="Daily walking (mins)">
+  <input id="workType" type="text" placeholder="Work type">
+  <input id="goal" type="text" placeholder="Goal">
+
+  <button id="submitBtn">Submit</button>
 </div>
 
-<div class="page">
-  <h2>User Information</h2>
-  <div class="container">
-    <input type="text" placeholder="Full Name" id="fullName">
-    <input type="number" placeholder="Age" id="age">
-    <input type="number" placeholder="Height (cm)" id="height">
-    <input type="number" placeholder="Current Weight (kg)" id="currentWeight">
-    <input type="number" placeholder="Weight 1 year ago (kg)" id="weight1yr">
-    <input type="number" placeholder="Weight 2 years ago (kg)" id="weight2yr">
-    <select id="exercise">
-      <option>Do you exercise?</option>
-      <option>Yes</option>
-      <option>No</option>
-      <option>Some days in a week</option>
-    </select>
-    <input type="text" placeholder="Your Hobby" id="hobby">
-    <input type="text" placeholder="Your Daily Walking (in mins)" id="walking">
-    <input type="text" placeholder="Your Work Type" id="workType">
-    <select id="goal">
-      <option>Goal</option>
-      <option>Lose Weight</option>
-      <option>Gain Weight</option>
-      <option>Stay Fit</option>
-    </select>
-    <button id="submitForm"><i class="fas fa-hand-point-right"></i> Submit</button>
-  </div>
-</div>
+<script>
+  $("#submitBtn").click(function(){
+    const data = {
+      fullName: $("#fullName").val(),
+      current: $("#currentWeight").val(),
+      w1: $("#weight1yr").val(),
+      w2: $("#weight2yr").val()
+    };
+    // Save to localStorage
+    localStorage.setItem("userData", JSON.stringify(data));
+    // Redirect to analysis page
+    window.location.href = "analysis.html";
+  });
+</script>
+
 </body>
 </html>
