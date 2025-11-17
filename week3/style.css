@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f2e9;
+  margin: 0;
+  padding: 0;
+}
+.page {
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 430px;
+  margin: auto;
+}
+h1,h2,p {
+  color: #6b4f3f;
+  margin: 10px 0;
+}
+.container {
+  width: 90%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+input, select {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border-radius: 20px;
+  border: none;
+  box-sizing: border-box;
+}
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 25px;
+  border: none;
+  background: #d6bfa7;
+  color: #fff;
+  font-size: 18px;
+  margin: 10px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+button:hover {
+  background: #c4a387;
+}
+.chart-container {
+  width: 100%;
+  max-width: 360px;
+  margin: 20px auto;
+}
+.options {
+  margin-top: 20px;
+  text-align: center;
+}
+.options button {
+  width: auto;
+  padding: 10px 20px;
+  margin: 5px;
+}
+p span {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #6b4f3f;
+}
+.hamburger {
+  font-size: 24px;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background: #d6bfa7;
+  padding: 50px 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+  z-index: 999;
+}
+.menu a {
+  display: block;
+  margin: 15px 0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.menu a:hover {
+  text-decoration: underline;
+}
